@@ -1,24 +1,36 @@
 import streamlit as st
+import time
 
-# Configuración inicial
-st.set_page_config(page_title="Karen AI", layout="wide")
+# Configuración visual
+st.set_page_config(page_title="Karen AI - Central de Mando", layout="wide")
 
-# Título y presentación
-st.title("🕸️ Karen: Asistente Personal")
-st.subheader("Estado: Sistemas activos")
+# Cabecera tipo Jarvis
+st.title("🕸️ KAREN: SISTEMA TÁCTICO DE ALTO RENDIMIENTO")
+st.markdown("---")
 
-# Menú lateral para organizar funciones
-menu = st.sidebar.selectbox("Selecciona un módulo", ["Inicio", "Basket", "Entrenamiento"])
+# Barra lateral de navegación simplificada
+st.sidebar.header("📁 Módulos Activos")
+menu = st.sidebar.selectbox("Selecciona una sección", 
+                            ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-if menu == "Inicio":
-    st.write("Hola, Isaac. Estoy lista para asistirte. ¿Qué protocolo ejecutamos hoy?")
-    if st.button("Autodiagnóstico"):
-        st.write("Sistemas al 100%. Memoria y procesadores optimizados.")
+# --- Lógica de la aplicación ---
 
-elif menu == "Basket":
-    st.write("### Análisis de Dribles")
-    st.write("Función en desarrollo. Aquí pondremos tus estadísticas.")
+if menu == "Dashboard":
+    st.subheader("Estado de Sistemas: Enfoque Total")
+    if st.button("Iniciar Protocolo de Concentración"):
+        with st.spinner("Cargando objetivos de baloncesto..."):
+            time.sleep(2)
+        st.success("Sistemas conectados. Isaac, el enfoque está en el básquet.")
+        st.info("Todo el sistema está optimizado para tu entrenamiento.")
 
-elif menu == "Entrenamiento":
-    st.write("### Plan de Entrenamiento")
-    st.write("Aquí registraremos tus rutinas de Taekwondo y físico.")
+elif menu == "Estudios":
+    st.subheader("📚 Módulo de Estudios")
+    st.write("Gestiona tus pendientes académicos para mantener el equilibrio.")
+
+elif menu == "Basket: Entrenamiento Intensivo":
+    st.subheader("🏀 Módulo de Basket: Enfoque Profesional")
+    st.write("Bienvenido al centro de análisis. Aquí registraremos tus tiros, estadísticas y progresos.")
+    
+# Footer visual
+st.sidebar.markdown("---")
+st.sidebar.write("Estado: **Modo Élite Activado**")
