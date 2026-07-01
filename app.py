@@ -2,46 +2,51 @@ import streamlit as st
 import time
 
 # Configuración visual
-st.set_page_config(page_title="Karen AI - Central de Mando", layout="wide")
+st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS para el efecto "Vibración Jarvis"
+# Estilo CSS para fondo negro y vibración
 st.markdown("""
     <style>
+    /* Fondo negro */
+    .stApp {
+        background-color: #000000;
+        color: white;
+    }
+    
+    /* Animación vibración */
     @keyframes vibrar {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
+        0% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.8; }
     }
     .jarvis-vibrar {
-        font-size: 50px;
-        animation: vibrar 1.5s infinite;
-        display: inline-block;
+        font-size: 150px; /* Telaraña más grande */
+        animation: vibrar 2s infinite;
+        text-align: center;
+        margin-top: 100px;
     }
     </style>
 """, unsafe_allow_html=True)
-
-# Cabecera tipo Jarvis con el efecto visual
-st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
-st.title("KAREN: SISTEMA TÁCTICO DE ALTO RENDIMIENTO")
-st.markdown("---")
 
 # Barra lateral de navegación
 st.sidebar.header("📁 Módulos Activos")
 menu = st.sidebar.selectbox("Selecciona una sección", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-# --- Lógica ---
+# --- Lógica de la pantalla ---
+
 if menu == "Dashboard":
-    st.subheader("Estado de Sistemas: Enfoque Total")
-    if st.button("Iniciar Protocolo de Concentración"):
-        with st.spinner("Sincronizando red neuronal..."):
-            time.sleep(2)
-        st.success("Sistemas conectados. Isaac, la telaraña está activa.")
+    # Muestra solo la telaraña vibrando en modo Dashboard
+    st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
+    
+    # Opcional: un pequeño botón que aparece solo al pasar el mouse o al hacer clic
+    if st.button("Iniciar Sistema"):
+        st.experimental_rerun()
 
 elif menu == "Estudios":
-    st.subheader("📚 Módulo de Estudios")
+    st.title("📚 Módulo de Estudios")
     st.write("Gestionando carga académica...")
 
 elif menu == "Basket: Entrenamiento Intensivo":
-    st.subheader("🏀 Módulo de Basket: Enfoque Profesional")
-    st.write("Analizando rendimiento de tiro y movilidad.")
+    st.title("🏀 Módulo de Basket")
+    st.write("Analizando rendimiento de tiro.")
