@@ -3,7 +3,7 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS para un look "Full Black" y estético
+# Estilo CSS optimizado
 st.markdown("""
     <style>
     /* Fondo total negro */
@@ -16,23 +16,10 @@ st.markdown("""
         background-color: transparent;
     }
     
-    /* Sidebar: Fondo negro */
+    /* Sidebar: Fondo gris oscuro/negro para buena visibilidad */
     [data-testid="stSidebar"] {
-        background-color: #000000;
-        border-right: 1px solid #222;
-    }
-    
-    /* Estética del menú desplegable (Selectbox) */
-    .stSelectbox div[data-baseweb="select"] {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-        border: 1px solid #ffffff !important;
-    }
-    
-    /* Fuerza el color del texto dentro del menú */
-    div[role="listbox"] {
-        background-color: #000000 !important;
-        color: #ffffff !important;
+        background-color: #121212;
+        border-right: 1px solid #333;
     }
     
     /* Animación vibración */
@@ -51,18 +38,17 @@ st.markdown("""
         pointer-events: none;
     }
     
-    /* Texto estético general */
+    /* Aseguramos que los textos sean legibles */
     h1, h2, h3, p, label, div {
         color: #ffffff !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Barra lateral estilizada
+# Barra lateral
 st.sidebar.markdown("### 🕸️ SISTEMAS")
-st.sidebar.markdown("---") # Línea divisoria estética
 menu = st.sidebar.selectbox("Selecciona un protocolo", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-# --- Elemento visual central ---
+# --- Elemento central ---
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
