@@ -3,18 +3,29 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS optimizado
+# Estilo CSS para un look "Full Black" y estético
 st.markdown("""
     <style>
-    /* Fondo negro absoluto */
+    /* Fondo total negro */
     .stApp {
         background-color: #000000;
     }
     
-    /* Panel lateral oscuro y estético */
+    /* Ocultar franja blanca superior */
+    header[data-testid="stHeader"] {
+        background-color: transparent;
+    }
+    
+    /* Sidebar: Fondo negro y texto blanco */
     [data-testid="stSidebar"] {
-        background-color: #0d0d0d;
-        border-right: 1px solid #333;
+        background-color: #000000;
+        border-right: 1px solid #222;
+    }
+    
+    /* Estética de las letras del menú */
+    div[data-baseweb="select"] {
+        background-color: #000000 !important;
+        border: 1px solid #ffffff !important;
     }
     
     /* Animación vibración */
@@ -28,34 +39,31 @@ st.markdown("""
         font-size: 150px;
         animation: vibrar 2s infinite;
         text-align: center;
-        margin-top: 50px;
+        margin-top: 100px;
         user-select: none;
         pointer-events: none;
     }
     
-    /* Estilo para los selectores (azul/blanco fosforescente al tocar) */
-    .stSelectbox div[data-baseweb="select"] {
-        border: 1px solid #00d4ff !important;
+    /* Texto estético */
+    h1, h2, h3, p, label {
         color: #ffffff !important;
+        font-family: 'Sans-Serif';
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Barra lateral
-st.sidebar.markdown("### 📁 SISTEMAS")
+# Barra lateral estilizada
+st.sidebar.markdown("### 🕸️ SISTEMAS")
 menu = st.sidebar.selectbox("Selecciona un protocolo", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-# --- Interfaz Principal ---
-# La telaraña se mantiene siempre visible
+# --- Elemento visual central ---
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
 
-# Lógica de contenido minimalista
-# Aquí no pusimos texto debajo, para que la pantalla quede limpia
+# Lógica minimalista
 if menu == "Dashboard":
     pass
 elif menu == "Estudios":
-    # Solo mostramos información si es estrictamente necesario en el futuro
     pass
 elif menu == "Basket: Entrenamiento Intensivo":
     pass
