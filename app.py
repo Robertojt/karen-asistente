@@ -3,12 +3,18 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS unificado
+# Estilo CSS optimizado
 st.markdown("""
     <style>
-    /* Fondo negro */
+    /* Fondo negro absoluto */
     .stApp {
         background-color: #000000;
+    }
+    
+    /* Panel lateral oscuro y estético */
+    [data-testid="stSidebar"] {
+        background-color: #0d0d0d;
+        border-right: 1px solid #333;
     }
     
     /* Animación vibración */
@@ -18,37 +24,38 @@ st.markdown("""
         100% { transform: scale(1); opacity: 0.8; }
     }
     
-    /* Clase de la telaraña: Bloqueamos selección y clicks */
     .jarvis-vibrar {
         font-size: 150px;
         animation: vibrar 2s infinite;
         text-align: center;
         margin-top: 50px;
-        user-select: none;         /* Impide que se seleccione */
-        -webkit-user-select: none; /* Para navegadores basados en WebKit */
-        pointer-events: none;      /* Ignora el mouse sobre ella */
+        user-select: none;
+        pointer-events: none;
     }
     
-    /* Color de textos */
-    h2, p {
+    /* Estilo para los selectores (azul/blanco fosforescente al tocar) */
+    .stSelectbox div[data-baseweb="select"] {
+        border: 1px solid #00d4ff !important;
         color: #ffffff !important;
-        text-align: center;
     }
     </style>
 """, unsafe_allow_html=True)
 
 # Barra lateral
-st.sidebar.header("📁 Módulos Activos")
-menu = st.sidebar.selectbox("Selecciona una sección", 
+st.sidebar.markdown("### 📁 SISTEMAS")
+menu = st.sidebar.selectbox("Selecciona un protocolo", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-# --- Elemento visual permanente ---
+# --- Interfaz Principal ---
+# La telaraña se mantiene siempre visible
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
 
-# Lógica de contenido
+# Lógica de contenido minimalista
+# Aquí no pusimos texto debajo, para que la pantalla quede limpia
 if menu == "Dashboard":
-    st.markdown("<h2>SISTEMA EN REPOSO</h2>", unsafe_allow_html=True)
+    pass
 elif menu == "Estudios":
-    st.markdown("<h2>MÓDULO DE ESTUDIOS</h2>", unsafe_allow_html=True)
+    # Solo mostramos información si es estrictamente necesario en el futuro
+    pass
 elif menu == "Basket: Entrenamiento Intensivo":
-    st.markdown("<h2>MÓDULO DE BASKET</h2>", unsafe_allow_html=True)
+    pass)
