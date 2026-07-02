@@ -3,7 +3,7 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS restaurado y limpio
+# Estilo CSS final: Fondo negro, sin líneas, telaraña vibrando
 st.markdown("""
     <style>
     /* Fondo total negro absoluto */
@@ -16,10 +16,10 @@ st.markdown("""
         background-color: transparent;
     }
     
-    /* Sidebar fondo negro */
+    /* Sidebar: Fondo negro y SIN borde derecho (la línea que señalabas) */
     [data-testid="stSidebar"] {
         background-color: #000000;
-        border-right: 1px solid #222;
+        border-right: none !important; 
     }
     
     /* Animación vibración */
