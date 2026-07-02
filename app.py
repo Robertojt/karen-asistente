@@ -58,4 +58,4 @@ elif menu == "Estudios":
     # Solo mostramos información si es estrictamente necesario en el futuro
     pass
 elif menu == "Basket: Entrenamiento Intensivo":
-    pass)
+    pass
