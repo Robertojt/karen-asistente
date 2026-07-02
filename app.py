@@ -4,7 +4,7 @@ import google.generativeai as genai
 # 1. Configuración de página
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Conexión con tu llave guardada en los Secrets de Streamlit
+# Conexión con tu llave
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 # 2. Estilos CSS
@@ -42,8 +42,9 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # El modelo corregido (gemini-1.5-flash)
+    # CORRECCIÓN: Usamos el modelo sin el prefijo 'models/' que a veces causa conflicto
     model = genai.GenerativeModel('gemini-1.5-flash')
+    
     instruccion = system_prompts.get(menu, "Eres Karen, una asistente útil.")
     full_prompt = f"{instruccion}\n\nPregunta: {prompt}"
     
@@ -53,4 +54,4 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
     except Exception as e:
-        st.error(f"Error al conectar con el cerebro: {e}")
+        st.error(f"Error técnico: {e}. Por favor, verifica en Google AI Studio que tu clave tenga acceso a gemini-1.5-flash.")
