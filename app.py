@@ -3,7 +3,7 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS final: Fondo negro, sin líneas, telaraña vibrando
+# Estilo CSS final: Fondo negro, sin líneas, telaraña vibrando y tamaño ajustado
 st.markdown("""
     <style>
     /* Fondo total negro absoluto */
@@ -16,7 +16,7 @@ st.markdown("""
         background-color: transparent;
     }
     
-    /* Sidebar: Fondo negro y SIN borde derecho (la línea que señalabas) */
+    /* Sidebar: Fondo negro y SIN borde derecho */
     [data-testid="stSidebar"] {
         background-color: #000000;
         border-right: none !important; 
@@ -30,10 +30,10 @@ st.markdown("""
     }
     
     .jarvis-vibrar {
-        font-size: 150px;
+        font-size: 250px; /* Tamaño aumentado para mayor impacto */
         animation: vibrar 2s infinite;
         text-align: center;
-        margin-top: 100px;
+        margin-top: 80px; /* Ajuste ligero de margen superior */
         user-select: none;
         pointer-events: none;
     }
