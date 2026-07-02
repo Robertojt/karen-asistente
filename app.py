@@ -16,16 +16,23 @@ st.markdown("""
         background-color: transparent;
     }
     
-    /* Sidebar: Fondo negro y texto blanco */
+    /* Sidebar: Fondo negro */
     [data-testid="stSidebar"] {
         background-color: #000000;
         border-right: 1px solid #222;
     }
     
-    /* Estética de las letras del menú */
-    div[data-baseweb="select"] {
+    /* Estética del menú desplegable (Selectbox) */
+    .stSelectbox div[data-baseweb="select"] {
         background-color: #000000 !important;
+        color: #ffffff !important;
         border: 1px solid #ffffff !important;
+    }
+    
+    /* Fuerza el color del texto dentro del menú */
+    div[role="listbox"] {
+        background-color: #000000 !important;
+        color: #ffffff !important;
     }
     
     /* Animación vibración */
@@ -44,26 +51,18 @@ st.markdown("""
         pointer-events: none;
     }
     
-    /* Texto estético */
-    h1, h2, h3, p, label {
+    /* Texto estético general */
+    h1, h2, h3, p, label, div {
         color: #ffffff !important;
-        font-family: 'Sans-Serif';
     }
     </style>
 """, unsafe_allow_html=True)
 
 # Barra lateral estilizada
 st.sidebar.markdown("### 🕸️ SISTEMAS")
+st.sidebar.markdown("---") # Línea divisoria estética
 menu = st.sidebar.selectbox("Selecciona un protocolo", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
 # --- Elemento visual central ---
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
-
-# Lógica minimalista
-if menu == "Dashboard":
-    pass
-elif menu == "Estudios":
-    pass
-elif menu == "Basket: Entrenamiento Intensivo":
-    pass
