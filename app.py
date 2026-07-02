@@ -5,8 +5,8 @@ import os
 # Configuración de la API Key
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-# Usamos el modelo más actual y compatible
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Usamos el modelo 1.0-pro, que es el más básico y compatible
+model = genai.GenerativeModel('gemini-1.0-pro')
 
 st.set_page_config(page_title="Karen AI", page_icon="🕸️")
 st.title("Karen AI 🕸️")
@@ -31,5 +31,5 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
             st.markdown(response.text)
             st.session_state.messages.append({"role": "assistant", "content": response.text})
         except Exception as e:
-            # Aquí es donde veremos el error técnico real
+            # Mostramos el error técnico exacto para diagnosticar
             st.error(f"Error técnico exacto: {type(e).__name__} - {e}")
