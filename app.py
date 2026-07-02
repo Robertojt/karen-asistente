@@ -1,13 +1,13 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 1. Configuración de página
+# Configuración básica
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Conexión con tu llave
+# Configurar API con la llave de los Secrets
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
-# 2. Estilos CSS
+# CSS para tu diseño
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -17,19 +17,19 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Personalidades
+# Personalidades
 system_prompts = {
     "Dashboard": "Eres Karen, un sistema de asistencia general, eficiente y profesional.",
     "Estudios": "Eres Karen, una experta académica. Explicas conceptos complejos de forma clara, didáctica y estructurada.",
     "Basket: Entrenamiento Intensivo": "Eres Karen, Coach de baloncesto. Tu enfoque es técnico, táctico y de alto rendimiento."
 }
 
-# 4. Sidebar
+# Sidebar
 st.sidebar.markdown("### 🕸️ SISTEMAS")
 menu = st.sidebar.selectbox("Selecciona un protocolo", list(system_prompts.keys()))
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
 
-# 5. Lógica del Chat
+# Lógica del Chat
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -42,10 +42,10 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # CORRECCIÓN: Usamos el modelo sin el prefijo 'models/' que a veces causa conflicto
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # MODELO ESTÁNDAR COMPATIBLE
+    model = genai.GenerativeModel('gemini-1.0-pro')
     
-    instruccion = system_prompts.get(menu, "Eres Karen, una asistente útil.")
+    instruccion = system_prompts.get(menu, "Eres Karen.")
     full_prompt = f"{instruccion}\n\nPregunta: {prompt}"
     
     try:
@@ -54,4 +54,4 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
     except Exception as e:
-        st.error(f"Error técnico: {e}. Por favor, verifica en Google AI Studio que tu clave tenga acceso a gemini-1.5-flash.")
+        st.error(f"Error técnico: {e}. Si esto persiste, verifica que tu API Key sea correcta y tenga permisos en Google AI Studio.")
