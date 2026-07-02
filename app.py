@@ -3,23 +3,23 @@ import streamlit as st
 # Configuración visual
 st.set_page_config(page_title="Karen AI", layout="wide")
 
-# Estilo CSS optimizado
+# Estilo CSS restaurado y limpio
 st.markdown("""
     <style>
-    /* Fondo total negro */
+    /* Fondo total negro absoluto */
     .stApp {
         background-color: #000000;
     }
     
-    /* Ocultar franja blanca superior */
+    /* Ocultar franja superior */
     header[data-testid="stHeader"] {
         background-color: transparent;
     }
     
-    /* Sidebar: Fondo gris oscuro/negro para buena visibilidad */
+    /* Sidebar fondo negro */
     [data-testid="stSidebar"] {
-        background-color: #121212;
-        border-right: 1px solid #333;
+        background-color: #000000;
+        border-right: 1px solid #222;
     }
     
     /* Animación vibración */
@@ -38,8 +38,8 @@ st.markdown("""
         pointer-events: none;
     }
     
-    /* Aseguramos que los textos sean legibles */
-    h1, h2, h3, p, label, div {
+    /* Color de textos globales en blanco */
+    h1, h2, h3, p, label {
         color: #ffffff !important;
     }
     </style>
@@ -50,5 +50,5 @@ st.sidebar.markdown("### 🕸️ SISTEMAS")
 menu = st.sidebar.selectbox("Selecciona un protocolo", 
                             ["Dashboard", "Estudios", "Basket: Entrenamiento Intensivo"])
 
-# --- Elemento central ---
+# --- Elemento visual central ---
 st.markdown('<div class="jarvis-vibrar">🕸️</div>', unsafe_allow_html=True)
