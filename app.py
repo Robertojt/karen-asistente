@@ -31,4 +31,5 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
             st.markdown(response.text)
             st.session_state.messages.append({"role": "assistant", "content": response.text})
         except Exception as e:
-            st.error("Karen está teniendo un problema técnico. Verifica tu API Key en los Settings de Streamlit.")
+            # Aquí es donde veremos el error técnico real
+            st.error(f"Error técnico exacto: {type(e).__name__} - {e}")
