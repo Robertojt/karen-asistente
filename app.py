@@ -26,10 +26,10 @@ if prompt := st.chat_input("¿Qué necesitas, Isaac?"):
 
     with st.chat_message("assistant"):
         try:
-            # Llamada al modelo Llama 3 vía Groq
+            # Llamada al modelo actualizado
             chat_completion = client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
-                model="llama3-8b-8192",
+                model="llama-3.1-8b-instant",
             )
             response = chat_completion.choices[0].message.content
             st.markdown(response)
